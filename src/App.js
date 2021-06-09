@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import Navigation from './components/Navigation/Navigation';
+import Profile from './components/Profile/Profile';
+import Diologs from './components/Diologs/Diologs';
+import News from './components/News/News';
+import { Route, BrowserRouter } from 'react-router-dom';
 
-function App() {
+const App = (props) => {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+      <div className="app-wrapper">
+        <Header/>
+        <Navigation/>
+        <div className="app-wrapper-content">
+            <Route path='/dialogs' render={()=> <Diologs dialogData={props.appState.dialogPage.dialogData} messageData={props.appState.dialogPage.messageData} imgData={props.appState.dialogPage.imgData}/>}/>
+            <Route path='/profile' render={()=><Profile postData={props.appState.profilePage.postData} addPost={props.addPost}/>}/>
+            <Route path='/news' component={News}/>
+            {/* <Diologs/> */}
+            {/* <Profile/> */}
+        </div>
     </div>
+    </BrowserRouter>
   );
 }
 

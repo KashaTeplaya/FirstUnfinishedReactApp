@@ -1,0 +1,20 @@
+.diologs{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogsItem{
+    
+}
+.active{
+    color:green;
+}
+.messages{
+
+}
+.messages img{
+    width: 40px;
+}
+.message{
+
+}
+
